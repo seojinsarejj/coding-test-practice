@@ -13,4 +13,13 @@ def solution(n):
             break
             
     return m
+
+
+# 다른 사람의 풀이
+def nextBigNumber(n):
+    c = bin(n).count('1')
+    for m in range(n+1,2*n+1):
+        if bin(m).count('1') == c:
+            return m
+
         
