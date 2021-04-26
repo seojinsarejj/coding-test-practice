@@ -23,69 +23,84 @@
         
                 
 #2차 --- 10.0 / 100.0
-def solution(routes):
+# def solution(routes):
     
-    rngs = []
+#     rngs = []
     
     
-    for route in routes :
+#     for route in routes :
         
-        r = range(route[0],route[1]+1)
+#         r = range(route[0],route[1]+1)
         
-        isIn = False
-        idx = 0
+#         isIn = False
+#         idx = 0
         
-        for i in range(len(rngs)):
+#         for i in range(len(rngs)):
             
-            if len(set(r) & set(range(rngs[i][0],rngs[i][1]+1))) == 0:
-                isIn = False
-            else:
-                isIn = True
-                idx = i
-                break
+#             if len(set(r) & set(range(rngs[i][0],rngs[i][1]+1))) == 0:
+#                 isIn = False
+#             else:
+#                 isIn = True
+#                 idx = i
+#                 break
                 
-        if isIn:
-            rng = range(rngs[idx][0],rngs[idx][1]+1)
-            new_rng = list(set(r) & set(rng))
-            rngs[idx] = [min(new_rng),max(new_rng)]
-        else:
-            rngs.append(route)
+#         if isIn:
+#             rng = range(rngs[idx][0],rngs[idx][1]+1)
+#             new_rng = list(set(r) & set(rng))
+#             rngs[idx] = [min(new_rng),max(new_rng)]
+#         else:
+#             rngs.append(route)
             
-    return len(rngs)
+#     return len(rngs)
             
-                
+    
 # 3차 --- 50.0 / 100.0
-def solution(routes):
+# def solution(routes):
     
+#     routes.sort(key=lambda x : x[1])
+    
+#     rngs = []
+    
+    
+#     for route in routes :
+        
+#         r = range(route[0],route[1]+1)
+        
+#         isIn = False
+#         idx = 0
+        
+#         for i in range(len(rngs)):
+            
+#             if len(set(r) & set(range(rngs[i][0],rngs[i][1]+1))) == 0:
+#                 isIn = False
+#             else:
+#                 isIn = True
+#                 idx = i
+#                 break
+                
+#         if isIn:
+#             rng = range(rngs[idx][0],rngs[idx][1]+1)
+#             new_rng = list(set(r) & set(rng))
+#             rngs[idx] = [min(new_rng),max(new_rng)]
+#         else:
+#             rngs.append(route)
+            
+#     return len(rngs)
+            
+# 다른 사람의 풀이
+def other_solution(routes):
+
     routes.sort(key=lambda x : x[1])
     
-    rngs = []
+    camera = -30001
+    answer = 0
     
-    
-    for route in routes :
+    for route in routes:
         
-        r = range(route[0],route[1]+1)
+        if camera < route[0] :
+            answer += 1
+            camera = route[1]
         
-        isIn = False
-        idx = 0
-        
-        for i in range(len(rngs)):
-            
-            if len(set(r) & set(range(rngs[i][0],rngs[i][1]+1))) == 0:
-                isIn = False
-            else:
-                isIn = True
-                idx = i
-                break
-                
-        if isIn:
-            rng = range(rngs[idx][0],rngs[idx][1]+1)
-            new_rng = list(set(r) & set(rng))
-            rngs[idx] = [min(new_rng),max(new_rng)]
-        else:
-            rngs.append(route)
-            
-    return len(rngs)
-            
-                
+    return answer
+
 print(solution([[-20,15], [-14,-5], [-18,-13], [-5,-3]]))
