@@ -81,14 +81,12 @@ def solution(food_times, k):
         
     while True:
         if queue[0][0] * len(queue) > k:
-            print(queue)
             break
         food = heapq.heappop(queue)
         k -= food[0] * (len(queue) + 1)
         
     result = sorted(queue, key=lambda x : x[1])
-    print(result)
-    return result[k % len(queue)][0]
+    return result[k % len(queue)][1] + 1
     
 print(solution([3, 1, 2],5))
     
