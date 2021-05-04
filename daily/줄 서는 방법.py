@@ -13,21 +13,20 @@ from math import factorial
 def solution(n, k):
     
     people = [i for i in range(1,n + 1)]
-    people_copy = people
     count = factorial(n)
     
     answer = []
     
-    for _ in range(len(people)-1):
+    for _ in range(n-1):
         
         p = people[(k-1) // (count // n)]
         answer.append(p)
         k = k % (count // n)
         count = count // n
         n -= 1
-        people_copy.remove(p)
+        people.remove(p)
     
-    answer.append(people_copy[0])
+    answer.append(people[0])
     
     
     return answer
