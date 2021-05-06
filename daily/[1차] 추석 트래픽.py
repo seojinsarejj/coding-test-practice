@@ -28,7 +28,7 @@ def solution(lines):
         
         start = time[1]
         end = start + 1000
-        count = 0
+        count = 1
         
         for t in timeline:
             if t[1] >= start and t[0] < end:
